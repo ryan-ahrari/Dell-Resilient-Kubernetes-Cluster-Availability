@@ -8,7 +8,7 @@ Creating etcd resiliency for Kubernetes clusters
 </p> -->
 
 <p align="center">
-  <img src="https://github.com//ryan-ahrari/Dell-Resilient-Kubernetes-Cluster-Availability/Images/etcd.png?raw=true" alt="etcd logo"/>
+  <img src="https://github.com//ryan-ahrari/Dell-Resilient-Kubernetes-Cluster-Availability/images/etcd.png?raw=true" alt="etcd logo"/>
 </p>
 
 In this project we will create several files that work in conjunction to provide resiliency for Kubernetes by giving robust recovery scenarios for failed etcd instances. 
