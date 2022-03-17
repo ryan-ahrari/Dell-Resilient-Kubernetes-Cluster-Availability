@@ -3,10 +3,13 @@
 
 
     #----------------------------------------------------------------------------------
-    # inital etcd health check script
-        # if no response from node, get error message
-            # write, or append error message to etcd_failure_error.txt
-            # based on error message, call appropriate error function          
+    # inital etcd health check section
+        # ping each node to see if it is responsive in a short time frame (<2s)
+            # if no response from leader node, there is unstability in cluster
+                # call restabilization function
+            # if no response from extra nodes
+                # write, or append error message to etcd_failure_error.txt
+                # based on error message, call appropriate error function          
     #----------------------------------------------------------------------------------
 
 
@@ -31,6 +34,15 @@
                         # place n/(d*r) instances of etcd on members
     #----------------------------------------------------------------------------------
 
+
+    #----------------------------------------------------------------------------------
+    # restabilization function, etcd leader unresponsive
+        # ping all nodes again and record fastest responder
+            # make fastest responding node new etcd leader 
+                # update leader information where necessary so all nodes can point to leader
+                    # return to beginning and redo error check
+    #----------------------------------------------------------------------------------
+    
 
     #----------------------------------------------------------------------------------
     # error more than 1/2 cluster nodes down
