@@ -23,5 +23,5 @@ First you would need to make sure that you are running a multinode vanilla clust
 
 After you have that set up, you could run our script protocol with the following command
 ```
-  python3 resillient.py
+  python3 resilient.py
 ```
