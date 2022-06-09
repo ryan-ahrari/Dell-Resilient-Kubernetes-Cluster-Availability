@@ -1,1 +1,186 @@
-# Delete this line and put in ss.yaml here!
+apiVersion: v1
+kind: Service
+metadata:
+  name: etcd-client
+spec:
+  type: LoadBalancer
+  ports:
+    - name: etcd-client
+      port: 2379
+      protocol: TCP
+      targetPort: 2379
+  selector:
+    app: etcd
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: etcd
+spec:
+  clusterIP: None
+  ports:
+    - port: 2379
+      name: client
+    - port: 2380
+      name: peer
+  selector:
+    app: etcd
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: etcd0
+  labels:
+    app: etcd
+spec:
+  serviceName: etcd
+  selector:
+    matchLabels:
+      app: etcd # Matches template.metadata.labels.app
+  replicas: 1
+  template:
+    metadata:
+      name: etcd
+      labels:
+        app: etcd # Matches selector.matchLabels.app
+    spec:
+      containers:
+        - name: etcd0
+          image: quay.io/coreos/etcd:v3.5.3
+          ports:
+            - containerPort: 2379
+              name: client
+            - containerPort: 2380
+              name: peer
+          volumeMounts:
+            - name: task-pvc-volume
+              mountPath: /root/data/myss
+          command:
+            - /bin/sh
+            - -c
+            - |
+              PEERS="etcd0-0=http://etcd0-0.etcd:2380,etcd1-0=http://etcd1-0.etcd:2380,etcd2-0=http://etcd2-0.etcd:2380"
+              exec etcd --name ${HOSTNAME} \
+                --listen-peer-urls http://0.0.0.0:2380 \
+                --listen-client-urls http://0.0.0.0:2379 \
+                --advertise-client-urls http://${HOSTNAME}.etcd:2379 \
+                --initial-advertise-peer-urls http://${HOSTNAME}:2380 \
+                --initial-cluster-token etcd-cluster-5000 \
+                --initial-cluster ${PEERS} \
+                --initial-cluster-state new \
+                --data-dir /root/data/myss
+  volumeClaimTemplates:
+  - metadata:
+      name: task-pvc-volume
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      storageClassName: manual
+      resources:
+        requests:
+          storage: 1Gi
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: etcd1
+  labels:
+    app: etcd
+spec:
+  serviceName: etcd
+  selector:
+    matchLabels:
+      app: etcd # Matches template.metadata.labels.app
+  replicas: 1
+  template:
+    metadata:
+      name: etcd
+      labels:
+        app: etcd # Matches selector.matchLabels.app
+    spec:
+      containers:
+        - name: etcd1
+          image: quay.io/coreos/etcd:v3.5.3
+          ports:
+            - containerPort: 2379
+              name: client
+            - containerPort: 2380
+              name: peer
+          volumeMounts:
+            - name: task-pvc-volume
+              mountPath: /root/data/myss
+          command:
+            - /bin/sh
+            - -c
+            - |
+              PEERS="etcd0-0=http://etcd0-0.etcd:2380,etcd1-0=http://etcd1-0.etcd:2380,etcd2-0=http://etcd2-0.etcd:2380"
+              exec etcd --name ${HOSTNAME} \
+                --listen-peer-urls http://0.0.0.0:2380 \
+                --listen-client-urls http://0.0.0.0:2379 \
+                --advertise-client-urls http://${HOSTNAME}.etcd:2379 \
+                --initial-advertise-peer-urls http://${HOSTNAME}:2380 \
+                --initial-cluster-token etcd-cluster-5000 \
+                --initial-cluster ${PEERS} \
+                --initial-cluster-state new \
+                --data-dir /root/data/myss
+  volumeClaimTemplates:
+  - metadata:
+      name: task-pvc-volume
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      storageClassName: manual
+      resources:
+        requests:
+          storage: 1Gi
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: etcd2
+  labels:
+    app: etcd
+spec:
+  serviceName: etcd
+  selector:
+    matchLabels:
+      app: etcd # Matches template.metadata.labels.app
+  replicas: 1
+  template:
+    metadata:
+      name: etcd
+      labels:
+        app: etcd # Matches selector.matchLabels.app
+    spec:
+      containers:
+        - name: etcd2
+          image: quay.io/coreos/etcd:v3.5.3
+          ports:
+            - containerPort: 2379
+              name: client
+            - containerPort: 2380
+              name: peer
+          volumeMounts:
+            - name: task-pvc-volume
+              mountPath: /root/data/myss
+          command:
+            - /bin/sh
+            - -c
+            - |
+              PEERS="etcd0-0=http://etcd0-0.etcd:2380,etcd1-0=http://etcd1-0.etcd:2380,etcd2-0=http://etcd2-0.etcd:2380"
+              exec etcd --name ${HOSTNAME} \
+                --listen-peer-urls http://0.0.0.0:2380 \
+                --listen-client-urls http://0.0.0.0:2379 \
+                --advertise-client-urls http://${HOSTNAME}.etcd:2379 \
+                --initial-advertise-peer-urls http://${HOSTNAME}:2380 \
+                --initial-cluster-token etcd-cluster-5000 \
+                --initial-cluster ${PEERS} \
+                --initial-cluster-state new \
+                --data-dir /root/data/myss
+  volumeClaimTemplates:
+  - metadata:
+      name: task-pvc-volume
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      storageClassName: manual
+      resources:
+        requests:
+          storage: 1Gi
