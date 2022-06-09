@@ -21,7 +21,7 @@ First you would need to make sure that you are running a multinode vanilla clust
 
 # #
 
-After you have that set up, you could run our script protocol with the following command
+After you have that set up, you could deploy our protocol by running the following script:
 ```
   python3 resilient.py
 ```
