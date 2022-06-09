@@ -18,7 +18,7 @@ This protocol works by migrating failed etcd pods. To do this we communicate wit
 
 <h2> How to use our project </h2>
 First you would need to make sure that you are running a multinode vanilla cluster (meaning no minikube), and be running etcd as an external service.  
-/
+\n
 After you have that set up, you could run our script protocol with the following command
 ```
   python3 resillient.py
