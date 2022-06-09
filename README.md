@@ -6,7 +6,7 @@ In this project we design a protocol to provide data resiliency for Kubernetes.
 
 
 <p align="center">
-  ![Kubernetes image!](/images/Kubernetes_logo.png "Kubernetes logo")
+   <img src="images/Kubernetes_logo.png" alt="Kubernetes logo"/>
 </p>
 
 <p align="center">
