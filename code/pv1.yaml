@@ -1,1 +1,15 @@
-
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: task-pv1-volume
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: "/root/data/myss"
