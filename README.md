@@ -1,5 +1,8 @@
 # Dell-Resilient-Kubernetes-Cluster-Availability
+
+<p align="center">
 Creating etcd resiliency for Kubernetes clusters
+</p>
 
 ![Kubernetes image!](/images/Kubernetes_logo.png "Kubernetes logo")
 
