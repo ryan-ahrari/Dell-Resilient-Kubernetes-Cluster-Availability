@@ -3,11 +3,11 @@
 
 In this project we design a protocol to provide data resiliency for Kubernetes. 
 
-![Kubernetes image!](/images/Kubernetes_logo.png "Kubernetes logo")9
 
-<!-- <p align="center">
-  ![Etcd image!](/images/etcd.png "etcd logo")
-</p> -->
+
+<p align="center">
+  ![Kubernetes image!](/images/Kubernetes_logo.png "Kubernetes logo")
+</p>
 
 <p align="center">
   <img src="images/etcd.png" alt="etcd logo"/>
