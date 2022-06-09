@@ -21,5 +21,5 @@ First you would need to make sure that you are running a multinode vanilla clust
 <br> </br>
 After you have that set up, you could deploy our protocol by running the following script:
 ```
-python3 resilient.py
+ python3 resilient.py
 ```
