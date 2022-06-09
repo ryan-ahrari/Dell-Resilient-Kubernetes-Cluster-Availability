@@ -14,7 +14,7 @@ In this project we design a protocol to provide data resiliency for Kubernetes.
   <img src="images/etcd.png" alt="etcd logo"/>
 </p>
 
-This protocol works by migrating failed etcd pods. To do this we communicate with the etcd and Kubernetes API's to get information about the Kubernetes cluster and the etcd cluster. This information is then used to decide which pods are to be migrated and and where they will be migrated to. 
+This protocol works by migrating unhealthy or failed etcd pods. To do this we communicate with the etcd and Kubernetes API's to get information about the Kubernetes cluster and the etcd cluster. This information is then used to decide which pods are to be migrated and and where they will be migrated to. 
 
 <h2> How to use our project </h2>
 
