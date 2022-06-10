@@ -45,7 +45,7 @@ on the master node with the following files  in order:
 - pv2.yaml
 - pv3.yaml
 - StatefulSet.yaml
-<br> </br>
+
 You should now have a working Kubernetes cluster that is running etcd as an external service!
 
 <br> </br>
