@@ -35,12 +35,12 @@ Then you would want to run etcd as an external service. To do this you would fir
 ```
 <br> </br>
 
-Once you have the data directory, you can apply the persistent volume files that will be used to bind the pod to a particular worker nodes data directory, and then deploy the actual etcd cluster by doing
+Once you have the data directory, you can apply the persistent volume files that will be used to bind the pod to a particular worker nodes data directory, and then deploy the actual etcd cluster by doing:
 
 ```
    kubectl apply -f {YAML FILE}
 ```
-
+on the master node. 
 With the following files (do them in order): pv1.yaml, pv2.yaml, pv3.yaml, StatefulSet.yaml
 <br> </br>
 You should now have a working Kubernetes cluster that is running etcd as an external service!
