@@ -38,10 +38,9 @@ Then you would want to run etcd as an external service. To do this you would fir
 Once you have the data directory, you can apply the persistent volume files that will be used to bind the pod to a particular worker nodes data directory, and then deploy the actual etcd cluster by doing:
 
 ```
-   kubectl apply -f {YAML FILE}
+   > kubectl apply -f {YAML FILE}
 ```
-on the master node. /
-With the following files (do them in order): 
+on the master node with the following files  in order: 
 - pv1.yaml 
 - pv2.yaml
 - pv3.yaml
@@ -55,5 +54,38 @@ You should now have a working Kubernetes cluster that is running etcd as an exte
 After you have that set up, you could deploy our protocol by running the following script:
 
 ```
-   python3 resilient.py
+   > python3 resilient.py
 ```
+
+<h2> If you run into issues </h2>
+
+Here are some useful commands you can run if you find problems.
+
+<br> </br>
+
+If you see that the etcd cluster is unable to successfully get all pods into a running state, you can run the following commands to delete the etcd cluster and its persistent volumes. 
+```
+   > kubectl delete -f StatefulSet.yaml
+   > kubectl delete pvc --all
+   > kubectl delete pv --all
+```
+
+<br> </br>
+
+If you are seeing an issue with Kubernetes, there may be several things you can do in order to resolve this. 
+
+First we would suggest to enable sudo mode by doing:
+```
+   > sudo su
+   > {ENTER PASSWORD}
+```
+Once you are the superuser, resume attempting whatever you were trying before that failed to see if it is now working. 
+
+
+If not, the next thing we would suggest is to reset the node that is giving you problems, by doing:
+```
+   > kubeadm reset
+```
+
+
+At this point the majority of issues should be resolved. 
