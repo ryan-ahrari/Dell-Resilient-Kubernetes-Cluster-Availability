@@ -40,8 +40,12 @@ Once you have the data directory, you can apply the persistent volume files that
 ```
    kubectl apply -f {YAML FILE}
 ```
-on the master node. 
-With the following files (do them in order): pv1.yaml, pv2.yaml, pv3.yaml, StatefulSet.yaml
+on the master node. /
+With the following files (do them in order): 
+- pv1.yaml 
+- pv2.yaml
+- pv3.yaml
+- StatefulSet.yaml
 <br> </br>
 You should now have a working Kubernetes cluster that is running etcd as an external service!
 
