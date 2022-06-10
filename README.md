@@ -82,10 +82,11 @@ First we would suggest to enable sudo mode by doing:
 Once you are the superuser, resume attempting whatever you were trying before that failed to see if it is now working. 
 
 
-If not, the next thing we would suggest is to reset the node that is giving you problems, by doing:
+If its not working still, the next thing we would suggest is to reset the node that is giving you problems, by doing:
 ```
    > kubeadm reset
 ```
+And then whther it is a master or worker node rejoin or reinitialize the cluster by doing the resepctive command from the above YouTube video.
 
 
-At this point the majority of issues should be resolved. 
+By this point the majority of issues should be resolved. 
