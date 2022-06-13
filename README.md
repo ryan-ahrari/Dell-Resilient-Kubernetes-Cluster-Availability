@@ -2,7 +2,7 @@
 
 <h2> What our project is all about </h2>
 
-In this project we design a protocol to provide data resiliency for Kubernetes. 
+In this project we work with DELL to design a protocol that provides data resiliency to Kubernetes. 
 
 
 
@@ -90,3 +90,6 @@ And then whther it is a master or worker node rejoin or reinitialize the cluster
 
 
 By this point the majority of issues should be resolved. 
+
+<h2> Acknowledgments </h2>
+Thanks to Ronald Chhua, Nathanael Chow, Juan Lee, Gareth Samadhana, Shefali Gautam, George Mathew, and Chegu Vinod for their contributions. 
